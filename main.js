@@ -314,13 +314,22 @@ const salesByWeek = [
         }
     }
 ]
+// define the variable to become the html element you want to interst the data into
 outputWeeklySales = document.querySelector(".carSales")
-let firstObject = salesByWeek[0]
+// Run a forEach loop on the entire array. "element" now becomes the array and you can use dot notation to access it's properties
 salesByWeek.forEach(element => {
-for (const salesByWeek of Object.entries(element)) {
+// Use dot notation to access the properties of the object you want to insert into the DOM.
+    outputWeeklySales.innerHTML += `<h3>${element.sales_agent.first_name} ${element.sales_agent.last_name}</h3>`
+    // Use a for loop to loop over the object of vehicles and use the .entries object method to print out the vehicle
+    // key/value pairs
+for (const salesByWeek of Object.entries(element.vehicle)) {
     outputWeeklySales.innerHTML += `<div>${salesByWeek[0]}: ${salesByWeek[1]}</div>`
+    console.log(salesByWeek)
+
 
 }
+outputWeeklySales.innerHTML += `<h3>Profit: $${element.gross_profit}</h3>`
+
 })
 
 
